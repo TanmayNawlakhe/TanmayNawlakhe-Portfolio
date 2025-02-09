@@ -1,13 +1,10 @@
-// Hero.jsx
+// ParticleSkull.jsx
 import * as THREE from 'three';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import { useState, useEffect, useRef } from 'react';
 import { MeshSurfaceSampler } from 'three/examples/jsm/math/MeshSurfaceSampler.js';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import gsap from 'gsap';
 
-function ParticleSkull() {
+export function ParticleSkull() {
     const { scene } = useGLTF('/tmp68kvobx1.glb');
     const [points, setPoints] = useState(null);
     const pointsRef = useRef();
@@ -179,7 +176,7 @@ function ParticleSkull() {
             pointsRef.current.material.uniforms.mousePos.value.set(x, y);
         };
     
-        const container = document.querySelector('.relative');
+        const container = document.querySelector('.canvas-container');
         if (container) {
             container.addEventListener('mousemove', handleMouseMove);
             return () => container.removeEventListener('mousemove', handleMouseMove);
@@ -187,97 +184,4 @@ function ParticleSkull() {
     }, []);
 
     return points ? <primitive object={points} /> : null;
-}
-
-export default function Hero() {
-    const handleDownload = (url = "src/assets/TAN_Resume.pdf") => {
-        fetch(url)
-            .then((response) => response.blob())
-            .then((blob) => {
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "TanmayNawlakhe_resume.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-            })
-            .catch((error) => {
-                console.error("Error fetching the file:", error);
-            });
-    };
-
-    useEffect(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".gsp-element",
-                start: "top 90%",
-                end: "top 0%",
-                toggleActions: "play reverse play reverse",
-                markers: false,
-            }
-        });
-
-        tl.fromTo(".gsp-element",
-            {
-                opacity: 0,
-                y: 100,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-            }
-        );
-
-        tl.fromTo(".gsp-element2",
-            {
-                opacity: 0,
-                y: 100,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-            }, "-=0.5"
-        );
-
-        return () => {
-            tl.kill();
-        };
-    }, []);
-
-    return (
-        <div style={{ width: '100vw', height: '115vh', paddingTop: window.innerWidth < 768 ? '30vh' : '8vh',
-        }} className={` ${window.innerWidth < 768 ? 'px-5' : 'px-24'} relative bg-[#1e1c1c]`}>
-            <Canvas camera={{ position: [0, 0, 5], fov: 50 }} style={{ width: '100%', height: window.innerWidth < 768 ? '50vh' : '105vh' 
- }}>
-                <ambientLight intensity={1} />
-                <pointLight position={[10, 10, 10]} />
-                <ParticleSkull />
-                <OrbitControls
-                    enableZoom={false}
-                    autoRotate={true}
-                    minPolarAngle={Math.PI / 2}
-                    maxPolarAngle={Math.PI / 2}
-                />
-                <EffectComposer>
-                    <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} intensity={0.13} />
-                </EffectComposer>
-            </Canvas>
-
-            <div data-hoverable='true' className='top-[15%] flex flex-col justify-between h-[100vh] absolute'>
-                <div className={`absolute top-0 transition-all duration-700 ease-in-out bg-gradient-to-tr from-yellow-300 to-blue-900 via-red-500 bg-clip-text text-transparent font-thin                    ${     window.innerWidth < 768 ? 'text-5xl left-[10vw]' : 'text-7xl left-0'}
- gsp-element`}>
-                    TANMAY A NAWLAKHE
-                </div>
-                <div onClick={handleDownload} className={`absolute cursor-pointer border-slate-400 border-[1px] py-2 px-4 text-white bg-gradient-to-l bottom-52 gsp-element2 ${ window.innerWidth < 768 ? ' left-[30vw]' : 'left-0'}`}>
-                    Resume
-                </div>
-            </div>
-        </div>
-    );
 }

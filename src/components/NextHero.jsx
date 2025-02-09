@@ -57,9 +57,9 @@ const NextHero = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".gsap-element",
-        start: "top 75%", // Triggers when element's top reaches 80% of viewport height
-        end: "top 50%",
-        toggleActions: "play none none reverse",
+        start: "top 50%", // Triggers when element's top reaches 80% of viewport height
+        end: "top 1%",
+        toggleActions: "play none play reverse",
         markers: false, // Set to true for debugging
       }
     });
@@ -139,8 +139,9 @@ const NextHero = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#1e1c1c] py-44 text-white px-24">
-      <div className="w-full h-fit flex justify-between">
+    <div className={`w-full min-h-screen bg-[#1e1c1c] text-white ${ window.innerWidth < 768 ? 'py-16 px-5' : 'py-44 px-24'}`}>
+      <div className={`w-full h-fit  flex              gap-2         ${window.innerWidth < 768 ? 'flex-col' : 'flex-row'}
+ justify-between`}>
         <div className="w-[30%] text-2xl font-thin">About Me</div>
         <div className="text-slate-400 text-xl font-thin flex flex-col gap-16">
           <div data-hoverable="true" className=' gsap-element'>
@@ -157,7 +158,9 @@ const NextHero = () => {
               My Tech fields are Web Development, Data Science, Machine Learning,
               and many
             </div>
-            <div className="flex w-[80%] gsap-element2 h-52 justify-center items-center flex-row flex-wrap gap-2">
+            <div className=
+            
+            {`flex w-[80%] gsap-element2 justify-center items-center flex-row flex-wrap gap-2 ${ window.innerWidth < 768 ? 'h-fit' : 'h-52'}`}>
               {techs.map((list, index) => (
                 TechBut(list.imageurl, list.tech , index)
               ))}
