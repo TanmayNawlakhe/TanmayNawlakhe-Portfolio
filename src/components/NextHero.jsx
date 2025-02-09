@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const NextHero = () => {
   const [techs, setTechs] = useState([
     {
-      imageurl: 'public/assets/react.svg',
+      imageurl: '/assets/react.svg',
       tech: "React.JS",
     },
     {
@@ -127,8 +127,8 @@ const NextHero = () => {
           <img
             className={`bg-[#1e1c1c] object-contain object-center transition-all duration-500 ease-in-out hover:cursor-crosshair 
             ${first ? 'rotate-180 ' : ''}`}
-            public={imageurl}
-            alt="React logo"
+            src={imageurl}
+            alt="logo"
           />
         </div>
         <div className="font-thin text-base hover:cursor-crosshair bg-black text-slate-200 py-1 px-4 rounded-s-full rounded-e-full">
