@@ -190,23 +190,16 @@ function ParticleSkull() {
 }
 
 export default function Hero() {
-    const handleDownload = (url = "src/assets/TAN_Resume.pdf") => {
-        fetch(url)
-            .then((response) => response.blob())
-            .then((blob) => {
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "TanmayNawlakhe_resume.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-            })
-            .catch((error) => {
-                console.error("Error fetching the file:", error);
-            });
+    const handleDownload = () => {
+        const url = "/assets/TAN_Resume.pdf"; // Place file in the public folder
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "TanmayNawlakhe_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
+    
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -270,9 +263,8 @@ export default function Hero() {
             </Canvas>
 
             <div data-hoverable='true' className='top-[15%] flex flex-col justify-between h-[100vh] absolute'>
-                <div className={`absolute top-0 transition-all duration-700 ease-in-out bg-gradient-to-tr from-yellow-300 to-blue-900 via-red-500 bg-clip-text text-transparent font-thin                    ${     window.innerWidth < 768 ? 'text-5xl left-[10vw]' : 'text-7xl left-0'}
- gsp-element`}>
-                    TANMAY A NAWLAKHE
+                <div className={`absolute top-0 transition-all duration-700 ease-in-out bg-gradient-to-tr from-yellow-300 to-blue-900 via-red-500 bg-clip-text text-transparent font-thin ${window.innerWidth < 768 ? 'text-5xl left-[10vw]' : 'text-7xl left-0'}
+ gsp-element`}>    TANMAY A NAWLAKHE
                 </div>
                 <div onClick={handleDownload} className={`absolute cursor-pointer border-slate-400 border-[1px] py-2 px-4 text-white bg-gradient-to-l bottom-52 gsp-element2 ${ window.innerWidth < 768 ? ' left-[30vw]' : 'left-0'}`}>
                     Resume
