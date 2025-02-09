@@ -12,43 +12,43 @@ const NextHero = () => {
       tech: "React.JS",
     },
     {
-      imageurl: 'public/assets/r3f.png',
+      imageurl: '/assets/r3f.png',
       tech: "Three.JS",
     },
     {
-      imageurl: 'public/assets/tailwindcss.svg',
+      imageurl: '/assets/tailwindcss.svg',
       tech: "Tailwind CSS",
     },
     {
-      imageurl: 'public/assets/gsap.svg',
+      imageurl: '/assets/gsap.svg',
       tech: "GSAP",
     },
     {
-      imageurl: 'public/assets/javascript.svg',
+      imageurl: '/assets/javascript.svg',
       tech: "JavaScript",
     },
     {
-      imageurl: 'public/assets/pton2.png',
+      imageurl: '/assets/pton2.png',
       tech: "Python",
     },
     {
-      imageurl: 'public/assets/r3f.png',
+      imageurl: '/assets/r3f.png',
       tech: "Three.JS",
     },
     {
-      imageurl: 'public/assets/tailwindcss.svg',
+      imageurl: '/assets/tailwindcss.svg',
       tech: "Tailwind CSS",
     },
     {
-      imageurl: 'public/assets/gsap.svg',
+      imageurl: '/assets/gsap.svg',
       tech: "GSAP",
     },
     {
-      imageurl: 'public/assets/javascript.svg',
+      imageurl: '/assets/javascript.svg',
       tech: "JavaScript",
     },
     {
-      imageurl: 'public/assets/pton2.png',
+      imageurl: '/assets/pton2.png',
       tech: "Python",
     },
   ]);
