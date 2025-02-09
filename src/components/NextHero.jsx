@@ -8,47 +8,47 @@ gsap.registerPlugin(ScrollTrigger);
 const NextHero = () => {
   const [techs, setTechs] = useState([
     {
-      imageurl: 'src/assets/react.svg',
+      imageurl: 'public/assets/react.svg',
       tech: "React.JS",
     },
     {
-      imageurl: 'src/assets/r3f.png',
+      imageurl: 'public/assets/r3f.png',
       tech: "Three.JS",
     },
     {
-      imageurl: 'src/assets/tailwindcss.svg',
+      imageurl: 'public/assets/tailwindcss.svg',
       tech: "Tailwind CSS",
     },
     {
-      imageurl: 'src/assets/gsap.svg',
+      imageurl: 'public/assets/gsap.svg',
       tech: "GSAP",
     },
     {
-      imageurl: 'src/assets/javascript.svg',
+      imageurl: 'public/assets/javascript.svg',
       tech: "JavaScript",
     },
     {
-      imageurl: 'src/assets/pton2.png',
+      imageurl: 'public/assets/pton2.png',
       tech: "Python",
     },
     {
-      imageurl: 'src/assets/r3f.png',
+      imageurl: 'public/assets/r3f.png',
       tech: "Three.JS",
     },
     {
-      imageurl: 'src/assets/tailwindcss.svg',
+      imageurl: 'public/assets/tailwindcss.svg',
       tech: "Tailwind CSS",
     },
     {
-      imageurl: 'src/assets/gsap.svg',
+      imageurl: 'public/assets/gsap.svg',
       tech: "GSAP",
     },
     {
-      imageurl: 'src/assets/javascript.svg',
+      imageurl: 'public/assets/javascript.svg',
       tech: "JavaScript",
     },
     {
-      imageurl: 'src/assets/pton2.png',
+      imageurl: 'public/assets/pton2.png',
       tech: "Python",
     },
   ]);
@@ -127,7 +127,7 @@ const NextHero = () => {
           <img
             className={`bg-[#1e1c1c] object-contain object-center transition-all duration-500 ease-in-out hover:cursor-crosshair 
             ${first ? 'rotate-180 ' : ''}`}
-            src={imageurl}
+            public={imageurl}
             alt="React logo"
           />
         </div>
