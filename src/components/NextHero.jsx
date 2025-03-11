@@ -77,7 +77,7 @@ const NextHero = () => {
         scale: 30,
         duration: 1,
         opacity:0.4,
-        ease: "power2.inOut",
+        ease: "power2.inOut", 
       }
     );
 
