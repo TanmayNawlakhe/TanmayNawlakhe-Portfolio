@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useState, useEffect, useRef } from 'react';
+import resumePdf from '../assets/TanmayNawlakhe_Resume.pdf';
 import { MeshSurfaceSampler } from 'three/examples/jsm/math/MeshSurfaceSampler.js';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import gsap from 'gsap';
@@ -191,7 +192,7 @@ function ParticleSkull() {
 
 export default function Hero() {
     const handleDownload = () => {
-        const url = "/assets/TAN_Resume.pdf"; // Place file in the public folder
+        const url = resumePdf;
         const link = document.createElement("a");
         link.href = url;
         link.download = "TanmayNawlakhe_Resume.pdf";
