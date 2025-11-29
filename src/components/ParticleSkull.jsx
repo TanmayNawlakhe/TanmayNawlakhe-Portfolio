@@ -1,10 +1,10 @@
-// ParticleSkull.jsx
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useState, useEffect, useRef } from 'react';
 import { MeshSurfaceSampler } from 'three/examples/jsm/math/MeshSurfaceSampler.js';
 
 export function ParticleSkull() {
+    // 1. Load the model (Ensure path is correct for your public folder)
     const { scene } = useGLTF('/tmp68kvobx1.glb');
     const [points, setPoints] = useState(null);
     const pointsRef = useRef();
@@ -12,6 +12,7 @@ export function ParticleSkull() {
     const mousePosition = useRef({ x: -1000, y: -1000 });
     const scrollPosition = useRef(0);
 
+    // 2. Handle Scroll
     useEffect(() => {
         const handleScroll = () => {
             scrollPosition.current = window.scrollY;
@@ -20,6 +21,7 @@ export function ParticleSkull() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // 3. Generate Particles from Mesh
     useEffect(() => {
         if (!scene) return;
 
@@ -31,7 +33,7 @@ export function ParticleSkull() {
 
         const vertices = [];
         const sizes = [];
-        const totalParticles = 3000;
+        const totalParticles = 1800;
         const highlightedParticles = 50;
 
         scene.traverse((obj) => {
@@ -45,6 +47,7 @@ export function ParticleSkull() {
                     attempts++;
                     sampler.sample(tempPosition);
                     const normalizedY = (tempPosition.y - minY) / (maxY - minY);
+                    // Distribution logic: more particles at the top
                     if (Math.random() < normalizedY) {
                         vertices.push(tempPosition.x * 2, tempPosition.y * 2, tempPosition.z * 2);
                         sizes.push(count < highlightedParticles ? 0.07 : 0.03);
@@ -115,6 +118,7 @@ export function ParticleSkull() {
         pointsRef.current = points;
     }, [scene]);
 
+    // 4. Animation Loop
     useEffect(() => {
         if (!pointsRef.current) return;
 
@@ -122,30 +126,41 @@ export function ParticleSkull() {
         let time = 0;
 
         const animate = () => {
-            time += 0.01;
+            time += 0.02;
 
             const positions = pointsRef.current.geometry.attributes.position.array;
             const original = originalPositions.current;
             
-            const scrollFactor = Math.min(scrollPosition.current / 500, 1);
-            const vibrationIntensity = scrollFactor * 4;
+            // Calculate scroll impact
+            // CHANGE: Increased divisor (500 -> 1000) to reduce sensitivity. 
+            // You now need to scroll more to get the effect to start ramping up.
+            const scrollFactor = scrollPosition.current / 3000;
+            
+            // CHANGE: Decreased multiplier (15.0 -> 6.0)
+            // This reduces the maximum distance the particles will fly apart.
+            const spreadRadius = scrollFactor * 6.0; 
 
             for (let i = 0; i < positions.length; i += 3) {
-                const noise = (Math.random() - 0.5) * vibrationIntensity;
+                const uniquePhase = i * 0.13; 
+
+                const noiseX = Math.sin(time + uniquePhase) * spreadRadius;
+                const noiseY = Math.cos(time + uniquePhase * 0.9) * spreadRadius;
+                const noiseZ = Math.sin(time + uniquePhase * 1.2) * spreadRadius;
+
                 positions[i] = THREE.MathUtils.lerp(
                     positions[i],
-                    original[i] + noise,
-                    0.02
+                    original[i] + noiseX,
+                    0.05 
                 );
                 positions[i + 1] = THREE.MathUtils.lerp(
                     positions[i + 1],
-                    original[i + 1] + noise,
-                    0.02
+                    original[i + 1] + noiseY,
+                    0.05
                 );
                 positions[i + 2] = THREE.MathUtils.lerp(
                     positions[i + 2],
-                    original[i + 2] + noise,
-                    0.02
+                    original[i + 2] + noiseZ,
+                    0.05
                 );
             }
 
@@ -161,26 +176,25 @@ export function ParticleSkull() {
         };
     }, []);
 
+    // 5. Mouse Interaction
     useEffect(() => {
         const handleMouseMove = (event) => {
             if (!pointsRef.current) return;
-    
-            const canvas = event.currentTarget.querySelector('canvas');
+
+            // Fallback to finding canvas if currentTarget isn't one
+            const canvas = event.target.closest('canvas') || document.querySelector('canvas');
             if (!canvas) return;
-    
+
             const rect = canvas.getBoundingClientRect();
             const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
             const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-    
+
             mousePosition.current = { x, y };
             pointsRef.current.material.uniforms.mousePos.value.set(x, y);
         };
-    
-        const container = document.querySelector('.canvas-container');
-        if (container) {
-            container.addEventListener('mousemove', handleMouseMove);
-            return () => container.removeEventListener('mousemove', handleMouseMove);
-        }
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
     return points ? <primitive object={points} /> : null;
