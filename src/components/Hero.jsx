@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useState, useEffect, useRef } from 'react';
-import resumePdf from '../assets/TanmayNawlakhe_Resume.pdf';
+import resumePdf from '/assets/TanmayNawlakhe_Resume.pdf';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import gsap from 'gsap';
 import { ParticleSkull } from './ParticleSkull';
