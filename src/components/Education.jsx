@@ -18,7 +18,7 @@ export default function Education() {
       gsap.fromTo(heading, { opacity: 0, y: 20 }, {
         opacity: 1,
         y: 0,
-        duration: 0.7,
+        duration: 0.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: el,

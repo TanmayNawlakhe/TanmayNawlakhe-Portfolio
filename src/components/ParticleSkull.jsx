@@ -130,14 +130,8 @@ export function ParticleSkull() {
 
             const positions = pointsRef.current.geometry.attributes.position.array;
             const original = originalPositions.current;
-            
-            // Calculate scroll impact
-            // CHANGE: Increased divisor (500 -> 1000) to reduce sensitivity. 
-            // You now need to scroll more to get the effect to start ramping up.
+
             const scrollFactor = scrollPosition.current / 3000;
-            
-            // CHANGE: Decreased multiplier (15.0 -> 6.0)
-            // This reduces the maximum distance the particles will fly apart.
             const spreadRadius = scrollFactor * 6.0; 
 
             for (let i = 0; i < positions.length; i += 3) {

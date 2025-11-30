@@ -9,8 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projects() {
   const projRef = useRef(null);
 
-    // projects imported from ../data/projects
-
   useEffect(() => {
     const el = projRef.current;
     if (!el) return;

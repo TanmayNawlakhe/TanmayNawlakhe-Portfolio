@@ -18,7 +18,7 @@ export default function Experience() {
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: el,
@@ -32,7 +32,7 @@ export default function Experience() {
   return (
     <div className="w-full text-white pb-24 px-6 md:px-24 experience-section relative">
       <div className={`container mx-auto transition-all duration-1000 relative z-10`} ref={expRef}>
-        {/* animre placed absolutely inside the Experience section (behind content) */}
+        {/* background blob */}
         <div className="exp-animre absolute -right-[10vw] top-1/2 -translate-y-1/2 w-16 h-16 bg-stone-950/65 rounded-full z-0" />
         <div className="flex flex-col md:flex-row gap-12">
           <div className="md:w-[30%]">

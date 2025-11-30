@@ -9,6 +9,11 @@ html,body{
     scroll-behavior: smooth;
 }
 
+html {
+  @apply scroll-smooth;
+}
+
+
 body::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera */
 }

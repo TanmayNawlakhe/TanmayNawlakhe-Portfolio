@@ -6,10 +6,8 @@ import { techs, langs } from '../data/skills';
 gsap.registerPlugin(ScrollTrigger);
 
 const NextHero = () => {
-  // techs and langs imported from data/skills.js
 
   useEffect(() => {
-    // Animation for the main content
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".gsap-element",
