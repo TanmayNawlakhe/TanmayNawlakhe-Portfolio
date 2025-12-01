@@ -10,6 +10,9 @@ export const techs = [
   { imageurl: '/assets/docker.svg', tech: 'Docker' },
   { imageurl: '/assets/mongo.svg', tech: 'MongoDB' },
   { imageurl: '/assets/postgres.svg', tech: 'PostgreSQL' },
+  { imageurl: '/assets/mysql.svg', tech: 'MySQL' },
+  { imageurl: '/assets/oracle.svg', tech: 'OracleDB' },
+  { imageurl: '/assets/git.svg', tech: 'Git' },
   { imageurl: '/assets/aws.svg', tech: 'AWS' },
   { imageurl: '/assets/gcp.svg', tech: 'GCP' }
 ];
@@ -19,7 +22,8 @@ export const langs = [
   { imageurl: '/assets/pton2.png', tech: 'Python' },
   { imageurl: '/assets/java.svg', tech: 'Java' },
   { imageurl: '/assets/javascript.svg', tech: 'JavaScript' },
-  { imageurl: '/assets/typescript.svg', tech: 'TypeScript' }
+  { imageurl: '/assets/typescript.svg', tech: 'TypeScript' },
+  { imageurl: '/assets/php.svg', tech: 'PHP' },
 ];
 
 export const experienceTags = ['Java', 'SpringBoot', 'AWS', 'MongoDB'];

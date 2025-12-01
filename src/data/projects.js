@@ -31,6 +31,21 @@ const projects = [
     icon: '/assets/favicon.svg',
     github: 'https://github.com/TanmayNawlakhe/TanmayNawlakhe-Portfolio',
     live: 'https://tanmay-nawlakhe-portfolio.vercel.app'
+  },
+  {
+    title: 'AI Candidate Screening',
+    desc: "AI-powered candidate screening system that converts natural language queries into SQL and provides intelligent responses using Google's Gemini AI and Oracle Database.",
+    stack: ['Streamlit', 'OracleDB', 'Python', 'Gemini AI'],
+    icon: '/assets/pton2.png',
+    github: 'https://github.com/TanmayNawlakhe/AI_Candidate_Screening',
+  },
+  {
+    title: 'Government Schemes and Exams Web Portal',
+    desc: 'Web Portal showing data of various Government Schemes and Exams. Built using HTML, CSS, PHP, MySQL.',
+    stack: ['PHP', 'MySQL'],
+    icon: '/assets/gov.ico',
+    github: 'https://github.com/TanmayNawlakhe/Government-Schemes-and-Exams-Website',
+    live: 'https://tanawlakhe.gt.tc/'
   }
 ];
 
